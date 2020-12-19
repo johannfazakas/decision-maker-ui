@@ -1,13 +1,20 @@
 import './App.css';
+import * as React from "react";
+import Decision from "./Decision";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Decision Maker Application
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <div>
+        <h1>Decision Maker Application</h1>
+        <ul>
+          <li><Decision /></li>
+          <li><Decision /></li>
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
