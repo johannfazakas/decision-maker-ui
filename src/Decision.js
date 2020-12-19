@@ -4,9 +4,9 @@ class Decision extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>Decision Name</div>
-        <div>Decision Description</div>
+      <div style={{ margin: '2rem', backgroundColor: "darkgray", padding: 5 }}>
+        <div style={{fontSize: "150%"}}>Decision name here.. </div>
+        <div>Decision description here..</div>
       </div>
     )
   }
