@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 
 class CreateDecisionForm extends React.Component {
 
@@ -9,8 +10,8 @@ class CreateDecisionForm extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    alert(`decision created with name: ${this.state.name}`);
-    this.setState({name: '', description: ''});
+    await axios.post("http://localhost:7733/dm-api/v1/decisions", {name: this.state.name, description: this.state.description});
+    this.setState({name: '', description: ''})
   }
 
   render() {
