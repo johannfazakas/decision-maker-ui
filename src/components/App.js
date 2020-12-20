@@ -1,7 +1,7 @@
 import './App.css';
 import * as React from "react";
-import DecisionList from "./components/DecisionList";
-import CreateDecisionForm from "./components/CreateDecisionForm";
+import DecisionList from "./DecisionList";
+import CreateDecisionForm from "./CreateDecisionForm";
 import axios from "axios";
 
 class App extends React.Component {
@@ -13,7 +13,8 @@ class App extends React.Component {
   }
 
   loadDecisions = () => {
-    axios.get("http://localhost:7733/dm-api/v1/decisions")
+    const url = "http://localhost:7733/dm-api/v1/decisions";
+    axios.get(url)
       .then(response => {
         this.setState(prevState => ({
           decisions: response.data.items
@@ -28,7 +29,7 @@ class App extends React.Component {
       <div style={{backgroundColor: "darkolivegreen", padding: 50}}>
         <h1 style={{color: "whitesmoke"}}>Decision Maker Application</h1>
         <CreateDecisionForm onDecisionCreated={this.loadDecisions} />
-        <DecisionList decisions={this.state.decisions} />
+        <DecisionList decisions={this.state.decisions} onDecisionDeleted={this.loadDecisions} />
         <h3 style={{color: "whitesmoke"}}>footer</h3>
       </div>
     );
