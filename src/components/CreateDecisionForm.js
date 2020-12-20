@@ -8,10 +8,21 @@ class CreateDecisionForm extends React.Component {
     description: ''
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    await axios.post("http://localhost:7733/dm-api/v1/decisions", {name: this.state.name, description: this.state.description});
+    this.createDecision();
     this.setState({name: '', description: ''})
+  }
+
+  createDecision = () => {
+    const data = {name: this.state.name, description: this.state.description};
+    const url = "http://localhost:7733/dm-api/v1/decisions";
+    axios.post(url, data)
+      .then(() => {
+        this.props.onDecisionCreated()
+      }, error => {
+        alert(`failed to create decision: ${error}`)
+      })
   }
 
   render() {
